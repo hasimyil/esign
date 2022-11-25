@@ -66,7 +66,7 @@ const NotificationScreen = () => {
 
 
   return (
-    <DefaultView>
+    <DefaultView  style={Common.backgroundPrimary}>
 
    <StandartHeader title={'Natifications'} profileImageSource={Images.document_tick} />
 

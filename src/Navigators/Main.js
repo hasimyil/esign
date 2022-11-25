@@ -71,7 +71,7 @@ const MainNavigator = () => {
         tabBarInactiveTintColor: 'gray',
         headerShown: false,
         tabBarShowLabel: false,
-        //tabBarStyle:{ borderTopLeftRadius:30, borderTopRightRadius:30}
+        tabBarStyle:{marginBottom:'-5%'}
 
       })}
 

@@ -21,7 +21,9 @@ const DocumentViewScreen = (props) => {
         )
     }
     return (
-        <DefaultView style={{ backgroundColor: 'white' }}>
+        <DefaultView 
+         style={{ backgroundColor: 'white' }}
+        >
             <StandartHeader
                 title={'Construction Contract'}
                 disableSearch
@@ -77,7 +79,7 @@ const DocumentViewScreen = (props) => {
                                     width: 140, height: 150,
                                     borderRadius: 25,
 
-                                }} resizeMode={'contain'} />
+                                }} resizeMode={'stretch'} />
                             </View>
                             <View style={{ alignSelf: 'flex-end', alignItems: 'center', width: '100%' }}>
                                 <Text>{item.name}</Text>

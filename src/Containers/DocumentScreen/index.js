@@ -51,7 +51,9 @@ const DocumentScreen = () => {
 
 
   return (
-    <DefaultView style={Common.backgroundPrimary}>
+    <DefaultView
+    //  style={Common.backgroundPrimary}
+     >
       {/* <GorgeousHeader
        title='Documents'
        showSearch={false}
@@ -59,7 +61,7 @@ const DocumentScreen = () => {
        style={{marginBottom:15}}
        profileImageSource={Images.document_tick}
        /> */}
-  <StandartHeader title={'Natifications'} profileImageSource={Images.document_tick} />
+  <StandartHeader title={'Documents'} profileImageSource={Images.document_tick} />
       <ScrollView style={{ marginTop: 10 }}>
         <DividerTitle title={t('document.folders')} titleRight={'+ ' + t('document.new_folder')} onPress={() => console.log("View ALL")} />
         {

@@ -16,7 +16,7 @@ const StandartHeader = ({title, profileImageSource, disableSearch = false, disab
         disableFirstIcon = {disableSearch}
         disableThirdIcon = {disableNotifications}
         height={80}
-        style={[ !showSearch && {elevation:10, borderBottomEndRadius: 35}] }
+        style={[ {elevation:10,borderBottomEndRadius: 35, shadowRadius:3, shadowOffset:{width:1,height:1}, shadowOpacity:0.2} , showSearch && {elevation:0,borderBottomEndRadius: 0}] }
         onFirstIconPress={() => setShowSearch(!showSearch)}
         profileImageSource={profileImageSource}
       />
