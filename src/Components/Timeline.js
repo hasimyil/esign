@@ -93,7 +93,7 @@ export default class Timeline extends Component{
           case 'time-show-forward':
             opStyle = {
               borderColor: lineColor,
-              borderStyle: 'dashed',
+            //  borderStyle: 'dashed',
               borderTopWidth: lineWidth,
               borderBottomWidth: 0,
               marginTop: this._margin,

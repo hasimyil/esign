@@ -6,7 +6,7 @@ import { useTheme } from '@/Hooks';
 const DefaultView = (props) => {
   const {Layout,Common,Windows} = useTheme()
   return (
-    <View style={[Layout.fill,{paddingTop: Windows.top, paddingBottom: Windows.bottom}, props.style && props.style]} >
+    <View style={[Layout.fill, props.style && props.style]} >
       <StatusBar barStyle = "dark-content" hidden = {false} backgroundColor = {Common.backgroundPrimary.backgroundColor} translucent = {true}/>
      {props.children}
     </View>

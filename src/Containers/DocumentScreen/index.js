@@ -77,12 +77,12 @@ const DocumentScreen = () => {
                   !isFetching && (
                     <FlatList
                       data={data}
-                      refreshControl={
-                        <RefreshControl
-                          refreshing={refreshing}
-                          onRefresh={onRefresh}
-                        />
-                      }
+                      // refreshControl={
+                      //   <RefreshControl
+                      //     refreshing={refreshing}
+                      //     onRefresh={onRefresh}
+                      //   />
+                      // }
                       horizontal={true}
                       showsHorizontalScrollIndicator={false}
                       renderItem={({ item }) => (
