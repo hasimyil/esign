@@ -42,7 +42,7 @@ const DocumentViewScreen = (props) => {
                     data={Data}
                     showsHorizontalScrollIndicator={false}
                     horizontal
-                    style={{backgroundColor:'#eef7ff', borderRadius:25, padding:15, marginTop:15}}
+                    style={{backgroundColor:'#eef7ff', borderRadius:25, padding:15, marginTop:15,  marginHorizontal:10}}
 
                     scrollEventThrottle={16}
                     ListHeaderComponent={() => (
@@ -96,7 +96,7 @@ const DocumentViewScreen = (props) => {
             </View>
 
             <View style={{
-                margin: 15, backgroundColor: '#eef7ff',
+                margin: 10, backgroundColor: '#eef7ff',
                 elevation: 0,
                 borderWidth: 1,
                 borderRadius: 15,
