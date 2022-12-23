@@ -1,9 +1,13 @@
 export default {
   welcome: 'Welcome to React Native esign by TheCodingMachine',
+  app_name:'SignCtrl',
   notification: {
     title:'Notification',
   },
   last_modified_documents:'Last modified documents',
+  login:{
+    welcome:"Welcome",
+  },
   document: {
     title:'Documents',
     folders:'Folders',
@@ -14,7 +18,7 @@ export default {
     continue: 'Continue',
   },
   example: {
-    helloUser: 'I am a fake user, my name is {{name}}',
+    helloUser: 'I logged in, My username is {{name}}',
     labels: {
       userId: 'Enter a user id',
     },

@@ -28,11 +28,12 @@ import {
 import { useState } from 'react'
 import SearchBar from "react-native-dynamic-search-bar";
 import { StandartHeader } from '@/Components'
+import { useSelector } from 'react-redux'
 const DocumentScreen = () => {
   const { Fonts, Images, Layout, Common, Windows } = useTheme()
   const { t } = useTranslation()
   const [showSearch, setShowSearch] = useState(false)
-
+  const { loading, userToken, userInfo } = useSelector((state) => state.user)
   const [fetchFolders, { data, isSuccess, isLoading, isFetching, error }] =
     useLazyFetchFoldersQuery()
 

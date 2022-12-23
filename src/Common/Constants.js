@@ -6,4 +6,10 @@ export const Screen = {
     DOCUMENT_SCREEN:'DOCUMENT_SCREEN',
     DOCUMENT_VIEW_SCREEN:'DOCUMENT_VIEW_SCREEN',
     PDF_VIEW:'PDF_VIEW',
+    LOGIN: 'LOGIN_SCREEN'
+}
+
+
+export const getEnv = () => {
+    return 'prod'
 }

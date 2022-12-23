@@ -1,0 +1,13 @@
+{
+    "mobile":{
+        "dev" : {
+            "url" : "https://gateway-hasimyil.cloud.okteto.net/"
+        },
+        "stage" : {
+            "url" : "https://gateway-hasimyil.cloud.okteto.net/"
+        },
+        "prod" : {
+            "url" : "https://gateway-hasimyil.cloud.okteto.net"
+        }
+    }
+}
