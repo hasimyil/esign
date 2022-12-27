@@ -1,5 +1,5 @@
 export default {
-  welcome: 'Welcome to React Native esign by TheCodingMachine',
+  welcome: 'Welcome to React Native esign by TeknoCtrl',
   app_name:'SignCtrl',
   notification: {
     title:'Notification',
@@ -7,6 +7,10 @@ export default {
   last_modified_documents:'Last modified documents',
   login:{
     welcome:"Welcome",
+  },
+  register:{
+    welcome:"Welcome",
+    create_account:"Create an account"
   },
   document: {
     title:'Documents',

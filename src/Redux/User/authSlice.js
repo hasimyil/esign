@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { userLogin } from './authActions'
+import { userLogin, userRegister } from './authActions'
 
 const initialState = {
   loading: false,
@@ -13,7 +13,19 @@ const initialState = {
 const authSlice = createSlice({
   name: 'user',
   initialState,
-  reducers: {},
+  reducers: {
+    logout: (state) => {
+      state.loading = false
+      state.userInfo = null
+      state.userToken = null
+      state.error = null
+      state.isLoggedIn=false
+      state.success = false 
+    },
+    resetError :(state)=>{
+      state.error = null
+    }
+  },
   extraReducers: {
     [userLogin.pending]: (state) => {
         state.loading = true
@@ -29,7 +41,19 @@ const authSlice = createSlice({
         state.loading = false
         state.error = payload
       },
+      [userRegister.pending]: (state) => {
+        state.loading = true
+        state.error = null
+      },
+      [userRegister.fulfilled]: (state, { payload }) => {
+        state.loading = false
+        state.success = true // registration successful
+      },
+      [userRegister.rejected]: (state, { payload }) => {
+        state.loading = false
+        state.error = payload
+      },
   },
 })
-
+export const { logout, resetError } = authSlice.actions
 export default authSlice.reducer

@@ -1,13 +1,13 @@
 {
     "mobile":{
         "dev" : {
-            "url" : "https://gateway-hasimyil.cloud.okteto.net/"
+            "url" : "https://teknoctrl-gateway-hasimyil-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com"
         },
         "stage" : {
-            "url" : "https://gateway-hasimyil.cloud.okteto.net/"
+            "url" : "https://teknoctrl-gateway-hasimyil-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com"
         },
         "prod" : {
-            "url" : "https://gateway-hasimyil.cloud.okteto.net"
+            "url" : "https://teknoctrl-gateway-hasimyil-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com"
         }
     }
 }

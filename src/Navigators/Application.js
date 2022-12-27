@@ -2,7 +2,7 @@ import React from 'react'
 import { SafeAreaView, StatusBar } from 'react-native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { NavigationContainer } from '@react-navigation/native'
-import { DocumentViewScreen, LoginScreen, PdfView, StartupContainer } from '@/Containers'
+import { DocumentViewScreen, LoginScreen, PdfView, RegisterScreen, StartupContainer } from '@/Containers'
 import { useTheme } from '@/Hooks'
 import MainNavigator from './Main'
 import { navigationRef } from './utils'
@@ -24,6 +24,13 @@ const ApplicationNavigator = () => {
           <Stack.Screen
             name={Screen.LOGIN}
             component={LoginScreen}
+            options={{
+              animationEnabled: false,
+            }}
+          />
+          <Stack.Screen
+            name={Screen.REGISTER}
+            component={RegisterScreen}
             options={{
               animationEnabled: false,
             }}

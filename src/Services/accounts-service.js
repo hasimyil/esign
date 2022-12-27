@@ -21,6 +21,13 @@ export default {
             'uaa/oauth/token',
             headers,
             params
+        ),
+        register: async (headers,body) =>
+        await serviceWrapper.POST(
+            'mobile',
+            'accounts/',
+            headers,
+            body
         )
     }
 }

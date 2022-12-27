@@ -36,9 +36,49 @@ export const userLogin = createAsyncThunk(
         if (error.response && error.response.data.message) {
           return rejectWithValue(error.response.data.message)
         } else if(error.status === 401){
-          return rejectWithValue("Check Your credintials, incorrect username")
+          return rejectWithValue("Please check your credintials, incorrect username or password!")
         }{
-          return rejectWithValue("Check Your credintials!!!!!")
+          return rejectWithValue("Nework Error")
+        }
+      }
+    }
+  )
+
+
+export const userRegister = createAsyncThunk(
+    'user/register',
+    async ({ username, password }, { rejectWithValue }) => {
+      try {
+        // configure header's Content-Type as JSON
+        const  headers = { 
+          'Content-Type' : "application/json"
+      }
+ 
+        const body = {
+            username:username,
+            password:password
+        }
+        
+        const data = await  accountsService.post.register(headers,JSON.stringify(body));
+        console.log("ERRRR",data)
+     
+       // const currentUserData = await accountsService.get.getCurrentUser(generateHeaders(data))
+        // store user's token in local storage
+        // localStorage.setItem('userToken', data.userToken)
+       // data.currentUser = currentUserData;
+
+        return data
+      } catch (error) {
+        // return custom error message from API if any
+        console.log("ERRRRRRROOOOOOORRR")
+        if (error.response && error.response.data.message) {
+          return rejectWithValue(error.response.data.message)
+        } else if(error.status === 401){
+          return rejectWithValue("Please check your credintials, incorrect username or password!")
+        }else if(error.status === 400){
+          return rejectWithValue("Username already exist!")
+        }{
+          return rejectWithValue("Nework Error")
         }
       }
     }

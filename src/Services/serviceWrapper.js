@@ -40,14 +40,14 @@ const GET = async(type, uri, headers) =>{
 
 const POST = async(type, uri, headers, body) =>{
     let fullUrl = `${getBaseUrl(type)}/${uri}`;
-    console.log(`POST: ${fullUrl}`, `HEADERS: `, headers || {}, `BODY : ${body}`);
+    console.log(`POST: ${fullUrl}`, `HEADERS: `, headers || {}, `BODY : `, body);
 
     const request = await fetch(fullUrl, {
         method: 'POST',
         headers: headers || {},
         body
     });
-
+  //console.log(request)
     if(request.status !== 200 && request.status !== 204 && request.status !== 302){
         console.log(`ERROR with POST request: ${fullUrl} - Headers: ${headers || {}}`)
         throw request;

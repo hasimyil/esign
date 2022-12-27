@@ -4,7 +4,6 @@ import { useTheme } from '@/Hooks'
 import DividerTitle from '@/Components/DividerTitle'
 import { useTranslation } from 'react-i18next'
 import TextInput from "react-native-text-input-interactive";
-import { userLogin } from '@/Redux/User/authActions'
 import { useDispatch, useSelector } from 'react-redux'
 import {
     SkypeIndicator
@@ -15,25 +14,38 @@ import SuperAlert from "react-native-super-alert";
 import AwesomeAlert from 'react-native-awesome-alerts';
 import { resetError } from '@/Redux/User/authSlice'
 import { Screen } from '@/Common/Constants'
-const LoginScreen = () => {
+import { userRegister } from '@/Redux/User/authActions'
+import { logout } from '@/Redux/User/authSlice'
+const RegisterScreen = () => {
     const { Fonts, Images, Layout, Common, Windows } = useTheme()
     const [username, setUsername] = useState(null);
     const [password, setPassword] = useState(null);
     const { t } = useTranslation()
     const dispatch = useDispatch()
-    const { loading, userToken, userInfo, isLoggedIn, error } = useSelector((state) => state.user)
+    const { loading, userToken, userInfo, isLoggedIn, error,success } = useSelector((state) => state.user)
     const submitForm = () => {
-        dispatch(userLogin({ username, password }))
+        dispatch(userRegister({ username, password }))
+    }
+    const handleSuccess = () =>{
+        navigateAndSimpleReset(Screen.LOGIN)
     }
     useEffect(() => {
-        console.log("LOGGED IN")
-        if (isLoggedIn) {
-            navigateAndSimpleReset("Main")
+        if (success) {
+            dispatch(logout())
+            alert(
+                'Successfully!!', // This is a title
+                "Your account created successfully!", // This is a alert message
+                {
+                    textConfirm: 'Login', // Label of button confirm
+                    textCancel: 'Cancel', // Label of button cancel
+                    onConfirm: () => handleSuccess(), // Call your confirm function 
+                }
+            )
         }
         return () => {
 
         }
-    }, [isLoggedIn])
+    }, [success])
 
     useEffect(() => {
        
@@ -65,7 +77,7 @@ const LoginScreen = () => {
             </View>
             <View style={{ padding: 15 }}>
                 <Text style={Fonts.titleXXL}>{t('login.welcome')}</Text>
-                <Text style={Fonts.textRegular}>to {t('app_name')}</Text>
+                <Text style={Fonts.textRegular}>{t('register.create_account')} for free!</Text>
             </View>
             <View style={styles.input}>
                 <TextInput
@@ -104,7 +116,7 @@ const LoginScreen = () => {
                                     justifyContent: 'center',
                                     alignItems: 'center'
                                 }}>
-                                <Text style={[Fonts.titleX, { color: 'white' }]}>Login</Text>
+                                <Text style={[Fonts.titleX, { color: 'white' }]}>Sign Up</Text>
                             </TouchableOpacity>
 
                         )
@@ -120,8 +132,8 @@ const LoginScreen = () => {
             </View>
             <View>
                  <Button 
-                    title="Don't you have an acoount"
-                    onPress={()=>navigate(Screen.REGISTER)}
+                    title="Already have an acoount?"
+                    onPress={()=>navigate(Screen.LOGIN)}
                   />
             </View>
             
@@ -129,7 +141,7 @@ const LoginScreen = () => {
     )
 }
 
-export default LoginScreen
+export default RegisterScreen
 
 const styles = StyleSheet.create({
     logo: {

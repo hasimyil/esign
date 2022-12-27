@@ -17,46 +17,41 @@ import { useLazyFetchFoldersQuery } from '@/Services/modules/folder'
 import GorgeousHeader from "react-native-gorgeous-header";
 import { userLogin } from '@/Redux/User/authActions'
 import moment from 'moment'
+import { logout } from '@/Redux/User/authSlice'
+import { navigateAndSimpleReset } from '@/Navigators/utils'
+import { Button, Divider } from "@react-native-material/core";
 
 const ExampleContainer = () => {
   const { t } = useTranslation()
   const { Common, Fonts, Gutters, Layout, Windows } = useTheme()
   const dispatch = useDispatch()
 
-  
 
-    const { loading, userToken, userInfo } = useSelector((state) => state.user)
- 
+
+  const { loading, userToken, userInfo } = useSelector((state) => state.user)
+
 
   const onChangeTheme = ({ theme, darkMode }) => {
     dispatch(changeTheme({ theme, darkMode }))
   }
 
+  const logOut = () => {
   
+    navigateAndSimpleReset('Startup')
+    dispatch(logout())
+  }
+
 
   return (
     <ScrollView
-      style={[Layout.fill,{paddingTop: Windows.top, paddingBottom: Windows.bottom, backgroundColor:'white'}]}
+      style={[Layout.fill, { paddingTop: Windows.top, paddingBottom: Windows.bottom, backgroundColor: 'white' }]}
       contentContainerStyle={[
         Layout.fill,
         Layout.colCenter,
         Gutters.smallHPadding,
       ]}
     >
-       {/* <GorgeousHeader
-       title='Documents'
-       showSearch={false}
-       menuImageSource={{
-        uri:
-          "https://images.unsplash.com/photo-1514846226882-28b324ef7f28?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80",
-      }}
-       subtitle='You can list and view all of your documents and foldes'
-       style={{marginBottom:15}}
-       profileImageSource={{
-        uri:
-          "https://images.unsplash.com/photo-1514846226882-28b324ef7f28?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80",
-      }}
-       /> */}
+
       <View style={[[Layout.colCenter, Gutters.smallHPadding]]}>
         <Brand />
         {(loading) && <ActivityIndicator />}
@@ -64,16 +59,20 @@ const ExampleContainer = () => {
           <Text style={Fonts.textRegular}>{error}</Text>
         ) : (
           <Text style={Fonts.textRegular}>
-            {t('example.helloUser', { name: userInfo.name  })}
+            { userInfo && t('example.helloUser', { name: userInfo.name })}
           </Text>
         )}
       </View>
 
-     
+
       <Text style={[Fonts.textRegular, Gutters.smallBMargin]}>
-      Last seen {!loading && moment().fromNow(userInfo.lastSeen)}
-       
+        Last seen {!loading && userInfo &&  moment().fromNow(userInfo.lastSeen)}
+
       </Text>
+      
+      <Divider style={{ marginTop: 10 }} color={'black'} leadingInset={35} />
+
+      <Button title="LogOut"  icon color="error" onPress={logOut}/>
 
       {/* <TouchableOpacity
         style={[Common.button.rounded, Gutters.regularBMargin]}
